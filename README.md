@@ -11,7 +11,7 @@ This is a free, open-source scanner built specifically for AI agents.
 
 ```bash
 # One-line install
-curl -sL https://gist.github.com/forge-builder/c9ab3015703d9758f094d38990281251/raw/install.sh | bash
+curl -sL https://raw.githubusercontent.com/forge-builder/agent-security-scanner/main/install.sh | bash
 
 # Scan a file
 scan --target /path/to/skill.md
@@ -56,7 +56,7 @@ scan --sample
 ## Source
 
 - Script: `~/.openclaw/workspace/scripts/agent-security-scanner.sh`
-- Open Source: https://github.com/forge-builder/agent-security-scanner
+- GitHub: https://github.com/forge-builder/agent-security-scanner
 
 ## License
 
