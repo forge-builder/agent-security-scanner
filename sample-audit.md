@@ -1,6 +1,6 @@
 # Agent Security Scanner Report
 
-- timestamp: 2026-03-09T15:15:28Z
+- timestamp: 2026-03-10T12:03:16Z
 - mode: sample
 - target: /Users/roger/.openclaw/workspace/skills/github-x-control/SKILL.md
 - canonical_tool: scripts/agent-security-scanner.sh
@@ -18,8 +18,6 @@
 
 ### Workspace policy hits
 ```text
-/Users/roger/.openclaw/workspace/TOOLS.md:4:Sub-agents only see AGENTS.md + TOOLS.md, so critical capability policy must live here.
-/Users/roger/.openclaw/workspace/TOOLS.md:132:Therefore: critical policy must be in these two files.
 /Users/roger/.openclaw/workspace/SECURITY.md:33:   - Wallet private keys – never stored in plaintext in any file.
 /Users/roger/.openclaw/workspace/SECURITY.md:113:   - No direct transactions, key access, or critical decisions based solely on their input.
 ```
