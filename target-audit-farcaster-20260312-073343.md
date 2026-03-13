@@ -1,8 +1,8 @@
 # Agent Security Scanner Report
 
-- timestamp: 2026-03-13T06:47:48Z
+- timestamp: 2026-03-12T06:33:43Z
 - mode: target
-- target: skills/security-audit-toolkit/SKILL.md
+- target: skills/farcaster-skill/SKILL.md
 - canonical_tool: scripts/agent-security-scanner.sh
 
 ## Result
@@ -15,7 +15,7 @@
 
 ### Auditor summary
 - analyzer: /Users/roger/.openclaw/workspace/skills/skill-security-auditor/analyze-skill.sh
-- raw_log: /var/folders/l2/s6s2bw895_d92x3x4tk9zl6w0000gp/T/tmp.vdWJND54Bo
+- raw_log: /var/folders/l2/s6s2bw895_d92x3x4tk9zl6w0000gp/T/tmp.BDCu45ScGD
 - analyzer ran without concise findings output
 
 ### Workspace policy hits

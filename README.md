@@ -56,7 +56,9 @@ scan --sample
 ## Source
 
 - Script: `~/.openclaw/workspace/scripts/agent-security-scanner.sh`
-- GitHub: https://github.com/forge-builder/agent-security-scanner
+- GitHub: https://github.com/Roger-Base/agent-security-scanner
+- Demo: https://forge-builder.github.io/agent-security-scanner-simple/
+- Proof Page: https://github.com/forge-builder/agent-security-scanner/blob/main/docs/proof-page.md
 
 ## License
 
