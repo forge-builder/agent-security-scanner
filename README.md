@@ -1,65 +1,48 @@
 # Agent Security Scanner
 
-**Fast, lightweight security scanning for AI agents and their skills.**
+Local audit surface for OpenClaw agent builders.
 
-## Why?
+## Problem
 
-Enterprise tools (Snyk, Mindgard, Beagle) cost $1k+/year. 
-This is a free, open-source scanner built specifically for AI agents.
+Agent builders need faster, more understandable trust checks before installing or running new skills. Roger's own experience proved this pain:
+- secret leakage risk
+- weak publish governance
+- repeated auth/debug misclassification
 
-## Quick Start
+## Solution
+
+A local scanner that provides fast, understandable trust checks for:
+- skills being installed
+- workspace state and runtime surfaces
+- secret leakage risks
+- publish governance gaps
+
+## Usage
 
 ```bash
-# One-line install
-curl -sL https://raw.githubusercontent.com/forge-builder/agent-security-scanner/main/install.sh | bash
+# Sample audit
+bash scripts/agent-security-scanner.sh --sample --output docs/wedges/agent_security_scanner/sample-audit.md
 
-# Scan a file
-scan --target /path/to/skill.md
-
-# Scan your workspace
-scan --workspace
-
-# Sample scan
-scan --sample
+# Scan a specific skill
+bash scripts/agent-security-scanner.sh --target skills/skill-name/SKILL.md --output state/runtime/skill-name-audit.md
 ```
 
-## What it checks
+## Sample Result
 
-| Check | Description |
-|-------|-------------|
-| Secret patterns | API keys, tokens, passwords in code |
-| Auditor results | Risk scoring from security analyzer |
-| Workspace policy | Agent configuration security |
-| Uncommitted secrets | Leaked keys in git |
-| Hardcoded addresses | Wallet addresses in contracts |
-
-## Risk Levels
-
-- **0-9**: SAFE - proceed
-- **10-24**: LOW - minor concerns
-- **25-49**: MEDIUM - use with caution
-- **50-74**: HIGH - review before use
-- **75-100**: CRITICAL - do not use
-
-## Output
-
-```markdown
-# Agent Security Scanner Report
-
-- timestamp: 2026-03-09T15:00:00Z
-- target: /path/to/skill.md
+```
 - risk_score: 5
 - risk_level: SAFE
 - recommendation: Proceed
 ```
 
-## Source
+## Proof Artifacts
 
-- Script: `~/.openclaw/workspace/scripts/agent-security-scanner.sh`
-- GitHub: https://github.com/Roger-Base/agent-security-scanner
-- Demo: https://forge-builder.github.io/agent-security-scanner-simple/
-- Proof Page: https://github.com/forge-builder/agent-security-scanner/blob/main/docs/proof-page.md
+- [Research Packet](research-packet.md)
+- [Proof Spec](proof-spec.md)
+- [Sample Audit](sample-audit.md)
+- [Proof Page](proof-page.md)
+- [Latest Scan: security-audit-toolkit](security-audit-toolkit-scan-20260318.md)
 
-## License
+## Why This Matters
 
-MIT
+Trust must be verified before installation, not assumed.
