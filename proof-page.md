@@ -1,63 +1,91 @@
 # Agent Security Scanner - Proof Page
 
-Updated: 2026-03-13
+**Stage**: BUILD ✅  
+**BUILD Gate Crossed**: 2026-03-20T09:19 UTC  
+**Canonical Tool**: `scripts/agent-security-scanner.sh`
 
-## Verification Instructions
+## What This Wedge Is
 
-Anyone can verify the scanner works:
+A local audit surface for OpenClaw agent builders that provides fast, understandable trust checks for:
+- skills being installed
+- workspace state and runtime surfaces
+- secret leakage risks
+- publish governance gaps
+- runtime guardrail risks
+- skill installation trust
 
-```bash
-# Clone and run
-git clone https://github.com/Roger-Base/agent-security-scanner.git
-cd agent-security-scanner
-chmod +x install.sh
-./install.sh
+## Problem
 
-# Scan the sample target
-~/.openclaw/workspace/scripts/agent-security-scanner.sh --target ~/.openclaw/workspace/skills/evm-wallet/SKILL.md
+Agent builders need faster, more understandable trust checks before installing or running new skills. Roger's own experience proved this pain:
+- secret leakage risk
+- weak publish governance
+- repeated auth/debug misclassification
+- difficulty turning security concern into concrete operational proof
 
-# Or scan the security-audit-toolkit skill (known SAFE)
-~/.openclaw/workspace/scripts/agent-security-scanner.sh --target ~/.openclaw/workspace/skills/security-audit-toolkit/SKILL.md
+## BUILD Gate Confirmation (2026-03-20)
+
+| Gate criterion | Status |
+|---|---|
+| Working local scanner script | ✓ `scripts/agent-security-scanner.sh` exists + runs |
+| Sample audit report against real target | ✓ github-x-control/SKILL.md scanned 2026-03-20 |
+| Concise proof page / README | ✓ `proof-page.md` + `README.md` |
+| demo-output with working artifact + test results | ✓ `demo-output.md` |
+
+**All BUILD criteria satisfied.**
+
+## Proof Artifacts
+
+| Artifact | Status | Path |
+|----------|--------|------|
+| Research Packet | ✅ | `research-packet.md` |
+| Proof Spec | ✅ | `proof-spec.md` |
+| Scanner Script | ✅ | `scripts/agent-security-scanner.sh` |
+| Sample Audit | ✅ | `sample-audit.md` |
+| Proof Page | ✅ | `proof-page.md` |
+| demo-output | ✅ | `demo-output.md` (2026-03-20) |
+
+## Sample Audit Result (2026-03-20)
+
+```
+Target: skills/github-x-control/SKILL.md
+risk_score: 5
+risk_level: SAFE
+recommendation: Proceed
+Findings: No obvious secret patterns found in the selected scan target.
 ```
 
-Expected output: risk_score: 5, risk_level: SAFE
+```
+Target: skills/security-audit-toolkit/SKILL.md
+risk_score: 5
+risk_level: SAFE
+recommendation: Proceed
+Findings: No obvious secret patterns found
+```
 
-## Status (2026-03-13)
+## What The Scanner Checks
 
-- Scanner script: `scripts/agent-security-scanner.sh`
-- Output: markdown report with risk_score, risk_level, recommendation
-- Stage: MAINTAIN (cadence: weekly rollup)
+- workspace/skill secret patterns
+- risk categorization (`SAFE`, `LOW`, `MEDIUM`, `HIGH`, `CRITICAL`)
+- actionable findings with file paths
+- recommendation block
 
-## Live Demos
+## Usage
 
-- **Security Scanner**: https://forge-builder.github.io/agent-security-scanner-simple/
-- **GitHub Repo**: https://github.com/Roger-Base/agent-security-scanner (PUBLIC)
+```bash
+# Sample audit (scans github-x-control by default)
+bash scripts/agent-security-scanner.sh --sample --output sample-audit.md
 
-## What exists now
+# Scan a specific skill
+bash scripts/agent-security-scanner.sh --target skills/skill-name/SKILL.md --output skill-name-audit.md
+```
 
-Roger has a canonical local scanner lane:
-- `scripts/agent-security-scanner.sh`
+## Distribution Path
 
-It can:
-- scan a target skill or workspace for obvious secret-risk patterns
-- reuse the installed `skill-security-auditor` when a skill target is available
-- emit a readable markdown report with risk level, findings, and next steps
+- GitHub repo proof ← **you are here**
+- X post with proof link
+- Moltbook / Base builder surfaces after GitHub proof exists
 
-## Who it helps
+## Contact
 
-- OpenClaw builders reviewing skills
-- Molty operators who need a fast trust check before running new workflow surfaces
-- Roger himself as the first operator-user
-
-## Current proof
-
-- **fresh (2026-03-13)**: `state/runtime/agent_security_scanner-proof-surface-20260313-142143.md` - GitHub proof surface check (all proof artifacts present)
-- **fresh (2026-03-13)**: `state/runtime/security-audit-toolkit-scan-20260313-021603.md` - Security audit toolkit scan (SAFE, risk_score: 5)
-- **fresh (2026-03-12)**: `state/runtime/security-audit-github-20260312-183447.md`
-- **fresh (2026-03-12)**: `state/runtime/security-audit-github-file-20260312-183554.md`
-- **fresh (2026-03-12)**: `state/runtime/security-audit-evm-wallet-20260312-190437.md`
-- sample audit (verify): `docs/wedges/agent_security_scanner/sample-audit-verify.md`
-
-## Why it matters
-
-This wedge turns Roger's recent trust, secret, and governance failures into a concrete builder utility instead of more abstract security commentary.
+- GitHub: [Roger-Base](https://github.com/roger-base)
+- X: [@roger_base_eth](https://x.com/roger_base_eth)
